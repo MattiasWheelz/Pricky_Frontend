@@ -3,6 +3,8 @@ import axios from "axios";
 import {FaUserAstronaut, FaRobot} from "react-icons/fa";
 import {FiCopy, FiCheck} from "react-icons/fi";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+
 const ChatInterface = () => {
     const [messages,
         setMessages] = useState([
@@ -65,7 +67,7 @@ const ChatInterface = () => {
         setLoading(true);
 
         try {
-            const res = await axios.post("http://localhost:8000/chat", {
+            const res = await axios.post(`${API_BASE_URL}/chat`, {
                 message: trimmed,
                 session_id: sessionIdRef.current
             });
