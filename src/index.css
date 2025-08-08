@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+    .zigzag-path {
+      stroke-dasharray: 260;
+      stroke-dashoffset: 260;
+      animation: drawZigzag 2s ease-out forwards, pulseZigzag 3s ease-in-out infinite;
+    }
+  
+    .card-border-glow {
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+  }
+  
+@keyframes drawZigzag {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes pulseZigzag {
+    0%,
+    100% {
+        stroke-opacity: 0.3;
+    }
+    50% {
+        stroke-opacity: 0.7;
+    }
+}
+@keyframes borderGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 4px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    }
+}
+
+
