@@ -93,7 +93,7 @@ const ChatInterface = () => {
                 errorMsg
             ]);
         } finally {
-            setLoading(false); // Ensure loading is reset even on error
+            setLoading(false);
         }
     };
 
