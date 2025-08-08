@@ -48,11 +48,11 @@ const ChatInterface = () => {
         if (wordCount > 60) {
             setInputError("❌ Please don't exceed the word limit! I have limited tokens 😅");
             setErrorShake(true);
-            setTimeout(() => setErrorShake(false), 600);
+            setTimeout(() => setErrorShake(false), 600); // reset shake
             return;
         }
 
-        setInputError(null);
+        setInputError(null); // Clear previous error
 
         const userMsg = {
             from: "user",
@@ -93,7 +93,7 @@ const ChatInterface = () => {
                 errorMsg
             ]);
         } finally {
-            setLoading(false);
+            setLoading(false); // Ensure loading is reset even on error
         }
     };
 
@@ -125,6 +125,7 @@ const ChatInterface = () => {
     return (
         <div
             className="relative h-full w-full flex flex-col border border-red-500 rounded-2xl p-3 md:p-6 bg-gradient-to-br from-[#0d1117] to-[#0f172a] animate-glowRed shadow-neonRed overflow-hidden">
+            {/* Chat messages */}
             <div className="flex-1 overflow-y-auto p-2 md:p-4 space-y-2 md:space-y-4">
                 {messages.map((msg, idx) => (
                     <div
@@ -139,6 +140,7 @@ const ChatInterface = () => {
                             className={`flex items-end gap-1 md:gap-2 max-w-[85%] md:max-w-[75%] ${msg.from === "user"
                             ? "flex-row-reverse"
                             : ""}`}>
+                            {/* Avatar with animation */}
                             <div
                                 className={`text-lg md:text-xl transition duration-300 ${msg.from === "user"
                                 ? "animate-float group-hover:scale-110"
@@ -147,11 +149,15 @@ const ChatInterface = () => {
                                     ? <FaUserAstronaut/>
                                     : <FaRobot/>}
                             </div>
+
+                            {/* Chat bubble */}
                             <div
-                                className={`px-2 md:px-4 py-2 md:py-3 rounded-2xl relative shadow-md break-words whitespace-pre-wrap ${msg.from === "user"
+                                className={`px-2 md:px-4 py-2 md:py-3 rounded-2xl relative shadow-md break-words whitespace-pre-wrap group transition-all duration-300 ${msg.from === "user"
                                 ? "bg-[#1e1f23] text-white rounded-br-none border border-[#3b3b3b]"
                                 : "bg-[#162135] text-[#d2d2d2] rounded-bl-none border border-[#253048]"}`}>
                                 {msg.text}
+
+                                {/* Copy button for bot messages */}
                                 {msg.from === "bot" && (
                                     <button
                                         onClick={() => handleCopy(msg.text, idx)}
@@ -162,6 +168,8 @@ const ChatInterface = () => {
                                             : <FiCopy/>}
                                     </button>
                                 )}
+
+                                {/* Timestamp */}
                                 <div className="text-[10px] md:text-[11px] mt-1 text-gray-400 font-mono">
                                     {msg.from === "user"
                                         ? "You"
@@ -172,6 +180,8 @@ const ChatInterface = () => {
                         </div>
                     </div>
                 ))}
+
+                {/* Loading bubble */}
                 {loading && (
                     <div className="flex justify-start w-full">
                         <div className="flex items-end gap-1 md:gap-2 max-w-[85%] md:max-w-[75%]">
@@ -187,8 +197,11 @@ const ChatInterface = () => {
                 )}
                 <div ref={chatRef}/>
             </div>
+
+            {/* Input + Error section */}
             <div
                 className="p-2 md:p-4 border-t border-[#3a3b3f] bg-[#0f172a] flex flex-col gap-1 md:gap-2">
+                {/* Input and button in a row */}
                 <div className="flex gap-1 md:gap-2">
                     <input
                         type="text"
@@ -201,6 +214,7 @@ const ChatInterface = () => {
                         }}
                         onKeyDown={(e) => e.key === "Enter" && handleSend()}
                         className="flex-1 px-2 md:px-4 py-1 md:py-2 rounded-xl bg-[#162135] text-white outline-none focus:ring-2 focus:ring-[#0074f0]"/>
+
                     <button
                         onClick={handleSend}
                         disabled={loading}
@@ -212,6 +226,8 @@ const ChatInterface = () => {
                             : "Send"}
                     </button>
                 </div>
+
+                {/* Error message BELOW input */}
                 {inputError && (
                     <div
                         className={`text-red-400 text-xs font-mono ml-1 ${errorShake
