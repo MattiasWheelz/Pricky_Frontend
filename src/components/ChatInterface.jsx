@@ -85,7 +85,7 @@ const ChatInterface = () => {
         } catch (error) {
             const errorMsg = {
                 from: "bot",
-                text: "⚠️ Oops! Something went wrong while contacting the server.",
+                text: "⚠️ Oops! Something went wrong while contacting the server. Please try after 10 Seconds.😇",
                 time: new Date()
             };
             setMessages((prev) => [
