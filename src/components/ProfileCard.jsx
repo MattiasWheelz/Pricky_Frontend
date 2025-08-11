@@ -3,135 +3,135 @@ import {
     FaLinkedin,
     FaFileAlt,
     FaEnvelope,
-    FaPhoneAlt,
-    FaPython,
-    FaGithub,
-    FaReact,
-    FaDatabase,
-    FaNodeJs
+    FaPhoneAlt
+    // FaPython,
+    // FaGithub,
+    // FaReact,
+    // FaDatabase,
+    // FaNodeJs
 } from "react-icons/fa";
-import {
-    SiFastapi,
-    SiTailwindcss,
-    SiPandas,
-    SiNumpy,
-    SiVite,
-    SiJavascript,
-    SiTypescript,
-    SiRedux,
-    SiHtml5,
-    SiCss3,
-    SiPostgresql,
-    SiMongodb,
-    SiFirebase,
-    SiDocker,
-    SiJupyter,
-    SiScikitlearn,
-    SiTensorflow,
-    SiOpenai,
-    SiVercel,
-    SiGithubactions,
-    SiNotion
-} from "react-icons/si";
+// import {
+//     SiFastapi,
+//     SiTailwindcss,
+//     SiPandas,
+//     SiNumpy,
+//     SiVite,
+//     SiJavascript,
+//     SiTypescript,
+//     SiRedux,
+//     SiHtml5,
+//     SiCss3,
+//     SiPostgresql,
+//     SiMongodb,
+//     SiFirebase,
+//     SiDocker,
+//     SiJupyter,
+//     SiScikitlearn,
+//     SiTensorflow,
+//     SiOpenai,
+//     SiVercel,
+//     SiGithubactions,
+//     SiNotion
+// } from "react-icons/si";
 
 import GlowyTube from "./GlowyTube";
 import profileImage from "../resources/profile_image.jpg";
 import ReportPopup from "./ReportPopUp";
 import ContactPopup from "./ContactPopUp";
 
-const FloatingIcons = () => {
-    const iconRefs = useRef([]);
-    const containerRef = useRef(null);
-    const [iconPositions,
-        setIconPositions] = useState([]);
+// const FloatingIcons = () => {
+//     const iconRefs = useRef([]);
+//     const containerRef = useRef(null);
+//     const [iconPositions,
+//         setIconPositions] = useState([]);
 
-    const icons = [
-        FaPython,
-        FaGithub,
-        FaReact,
-        FaDatabase,
-        FaNodeJs,
-        SiFastapi,
-        SiTailwindcss,
-        SiPandas,
-        SiNumpy,
-        SiVite,
-        SiJavascript,
-        SiTypescript,
-        SiRedux,
-        SiHtml5,
-        SiCss3,
-        SiPostgresql,
-        SiMongodb,
-        SiFirebase,
-        SiDocker,
-        SiJupyter,
-        SiScikitlearn,
-        SiTensorflow,
-        SiOpenai,
-        SiVercel,
-        SiGithubactions,
-        SiNotion
-    ];
+//     const icons = [
+//         FaPython,
+//         FaGithub,
+//         FaReact,
+//         FaDatabase,
+//         FaNodeJs,
+//         SiFastapi,
+//         SiTailwindcss,
+//         SiPandas,
+//         SiNumpy,
+//         SiVite,
+//         SiJavascript,
+//         SiTypescript,
+//         SiRedux,
+//         SiHtml5,
+//         SiCss3,
+//         SiPostgresql,
+//         SiMongodb,
+//         SiFirebase,
+//         SiDocker,
+//         SiJupyter,
+//         SiScikitlearn,
+//         SiTensorflow,
+//         SiOpenai,
+//         SiVercel,
+//         SiGithubactions,
+//         SiNotion
+//     ];
 
-    useEffect(() => {
-        const positions = Array
-            .from({length: 30})
-            .map(() => ({
-                x: Math.random() * 90,
-                y: Math.random() * 90,
-                dx: (Math.random() - 0.5) * 0.5,
-                dy: (Math.random() - 0.5) * 0.5
-            }));
-        setIconPositions(positions);
-    }, []);
+//     useEffect(() => {
+//         const positions = Array
+//             .from({length: 30})
+//             .map(() => ({
+//                 x: Math.random() * 90,
+//                 y: Math.random() * 90,
+//                 dx: (Math.random() - 0.5) * 0.5,
+//                 dy: (Math.random() - 0.5) * 0.5
+//             }));
+//         setIconPositions(positions);
+//     }, []);
 
-    useEffect(() => {
-        let animationFrameId;
-        const animate = () => {
-            setIconPositions((prev) => prev.map((pos) => {
-                let newX = pos.x + pos.dx;
-                let newY = pos.y + pos.dy;
+//     useEffect(() => {
+//         let animationFrameId;
+//         const animate = () => {
+//             setIconPositions((prev) => prev.map((pos) => {
+//                 let newX = pos.x + pos.dx;
+//                 let newY = pos.y + pos.dy;
 
-                if (newX < 0 || newX > 95) 
-                    pos.dx *= -1;
-                if (newY < 0 || newY > 95) 
-                    pos.dy *= -1;
+//                 if (newX < 0 || newX > 95) 
+//                     pos.dx *= -1;
+//                 if (newY < 0 || newY > 95) 
+//                     pos.dy *= -1;
                 
-                return {
-                    ...pos,
-                    x: Math.max(0, Math.min(95, newX)),
-                    y: Math.max(0, Math.min(95, newY))
-                };
-            }));
-            animationFrameId = requestAnimationFrame(animate);
-        };
-        animationFrameId = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(animationFrameId);
-    }, []);
+//                 return {
+//                     ...pos,
+//                     x: Math.max(0, Math.min(95, newX)),
+//                     y: Math.max(0, Math.min(95, newY))
+//                 };
+//             }));
+//             animationFrameId = requestAnimationFrame(animate);
+//         };
+//         animationFrameId = requestAnimationFrame(animate);
+//         return () => cancelAnimationFrame(animationFrameId);
+//     }, []);
 
-    return (
-        <div ref={containerRef} className="absolute inset-0 pointer-events-none z-10">
-            {iconPositions.map((pos, index) => {
-                const Icon = icons[index % icons.length];
-                return (
-                    <span
-                        key={index}
-                        ref={(el) => (iconRefs.current[index] = el)}
-                        className="absolute text-gray-400 opacity-30"
-                        style={{
-                        left: `${pos.x}%`,
-                        top: `${pos.y}%`,
-                        fontSize: "1rem md:text-1.2rem",
-                        transition: "none"
-                    }}>
-                        <Icon/>
-                    </span>
-                );
-            })}
-        </div>
-    );
-};
+//     return (
+//         <div ref={containerRef} className="absolute inset-0 pointer-events-none z-10">
+//             {iconPositions.map((pos, index) => {
+//                 const Icon = icons[index % icons.length];
+//                 return (
+//                     <span
+//                         key={index}
+//                         ref={(el) => (iconRefs.current[index] = el)}
+//                         className="absolute text-gray-400 opacity-30"
+//                         style={{
+//                         left: `${pos.x}%`,
+//                         top: `${pos.y}%`,
+//                         fontSize: "1rem md:text-1.2rem",
+//                         transition: "none"
+//                     }}>
+//                         <Icon/>
+//                     </span>
+//                 );
+//             })}
+//         </div>
+//     );
+// };
 
 const ProfileCard = () => {
     const [showReportPopup,
@@ -153,8 +153,7 @@ const ProfileCard = () => {
                 </div>
                 <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">Varun Gandhi</h1>
                 <p className="text-sm md:text-md text-white mt-1 max-w-[80%]">
-                    🧠 I love wearing different Hats 🎓 — I architect, analyze, develop, automate
-                    and adapt.
+                    Skills : Python, SQL, Data Analysis, Selenium, Automation, HTML, CSS, React, GCP, AWS, GIT, AI Integrations
                 </p>
                 <div className="mt-4 space-y-2 md:space-y-3 text-sm md:text-md w-full">
                     <a
