@@ -142,7 +142,6 @@ const ProfileCard = () => {
     return (
         <div
             className="relative h-full w-full flex flex-col items-center justify-center border border-cyan-400 rounded-2xl p-4 md:p-6 bg-gradient-to-br from-[#0d1117] to-[#0f172a] card-border-glow overflow-hidden">
-            <FloatingIcons/>
             <div className="relative z-30 flex flex-col items-center text-center space-y-4">
                 <div
                     className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-cyan-500 overflow-hidden transition-shadow duration-300 group-hover:shadow-neon">
